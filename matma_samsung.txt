@@ -1,0 +1,51 @@
+
+#include <iostream>
+#include <math.h>
+#include <string.h>
+
+using namespace std;
+
+bool check1379(int hieu){
+    if(hieu == 1|| hieu == 3||hieu == 5||hieu==7){
+        return true;
+    }return false;
+} 
+bool check2468(int hieu){
+    if(hieu == 1|| hieu == 2|| hieu == 3||hieu == 4||hieu == 5||hieu==7){
+    return true;
+    }return false;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    while(n>0){
+        string kq="";
+        string t;
+        cin >> t;
+        for(int i = 0; i < t.length()-1; i++){
+           if(t[i] == '5') continue;
+           if(t[i+1] == '5') continue;
+           if(t[i] == '1'||t[i] == '3'||t[i] == '7'||t[i] == '9'){
+              if(check1379(abs(t[i+1] - t[i]))) continue;
+              else{
+                  kq = "No";
+                  break;
+              }
+           }
+            if(t[i] == '2'||t[i] == '4'||t[i] == '6'||t[i] == '8'){
+              if(check2468(abs(t[i+1] - t[i]))) continue;
+              else{
+                  kq = "No";
+                  break;
+              }
+           }
+        }
+        if(kq == "No") cout<< "No"<<endl;
+        else cout<<"Yes"<<endl;
+        n--;
+    }
+    
+    return 0;
+}
